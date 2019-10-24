@@ -1,88 +1,38 @@
-<p align="center">
-    <a href="https://sylius.com" target="_blank">
-        <img src="https://demo.sylius.com/assets/shop/img/logo.png" />
-    </a>
-</p>
 
-<h1 align="center">Plugin Skeleton</h1>
+# Redsys Plugin [![Build Status](https://travis-ci.org/eclyptox/SyliusRedsysPlugin.svg?branch=master)](https://travis-ci.org/eclyptox/SyliusRedsysPlugin)
 
-<p align="center">Skeleton for starting Sylius plugins.</p>
+## Overview
+
+This plugin integrated [Redsys payments](http://www.redsys.es/) with Sylius based applications. After installing it you should be able to create a payment method for Redsys gateway and enable its payments in your web store.
 
 ## Installation
 
-1. Run `composer create-project sylius/plugin-skeleton ProjectName`.
+```bash
+$ composer require eclyptox/redsys-plugin
 
-2. From the plugin skeleton root directory, run the following commands:
-
-    ```bash
-    $ (cd tests/Application && yarn install)
-    $ (cd tests/Application && yarn build)
-    $ (cd tests/Application && bin/console assets:install public -e test)
+```
     
-    $ (cd tests/Application && bin/console doctrine:database:create -e test)
-    $ (cd tests/Application && bin/console doctrine:schema:create -e test)
-    ```
+Add plugin dependencies to your config/bundles.php file:
 
-To be able to setup a plugin's database, remember to configure you database credentials in `tests/Application/.env` and `tests/Application/.env.test`.
+```php
+return [
+    Eclyptox\SyliusRedsysPlugin\EclyptoxSyliusRedsysPlugin::class => ['all' => true],
+]
+```
 
-## Usage
+## Testing
+```bash
+$ wget http://getcomposer.org/composer.phar
+$ php composer.phar install
+$ yarn install
+$ yarn run gulp
+$ php bin/console sylius:install --env test
+$ php bin/console server:start --env test
+$ open http://localhost:8000
+$ bin/behat features/*
+$ bin/phpspec run
+```
 
-### Running plugin tests
+## Contribution
 
-  - PHPUnit
-
-    ```bash
-    $ vendor/bin/phpunit
-    ```
-
-  - PHPSpec
-
-    ```bash
-    $ vendor/bin/phpspec run
-    ```
-
-  - Behat (non-JS scenarios)
-
-    ```bash
-    $ vendor/bin/behat --tags="~@javascript"
-    ```
-
-  - Behat (JS scenarios)
- 
-    1. Download [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/)
-    
-    2. Download [Selenium Standalone Server](https://www.seleniumhq.org/download/).
-    
-    2. Run Selenium server with previously downloaded Chromedriver:
-    
-        ```bash
-        $ java -Dwebdriver.chrome.driver=chromedriver -jar selenium-server-standalone.jar
-        ```
-        
-    3. Run test application's webserver on `localhost:8080`:
-    
-        ```bash
-        $ (cd tests/Application && bin/console server:run localhost:8080 -d public -e test)
-        ```
-    
-    4. Run Behat:
-    
-        ```bash
-        $ vendor/bin/behat --tags="@javascript"
-        ```
-
-### Opening Sylius with your plugin
-
-- Using `test` environment:
-
-    ```bash
-    $ (cd tests/Application && bin/console sylius:fixtures:load -e test)
-    $ (cd tests/Application && bin/console server:run -d public -e test)
-    ```
-    
-- Using `dev` environment:
-
-    ```bash
-    $ (cd tests/Application && bin/console sylius:fixtures:load -e dev)
-    $ (cd tests/Application && bin/console server:run -d public -e dev)
-    ```
+Learn more about our contribution workflow on <http://docs.sylius.org/en/latest/contributing/>.
