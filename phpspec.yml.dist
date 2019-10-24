@@ -1,0 +1,4 @@
+suites:
+    main:
+        namespace: Eclyptox\SyliusRedsysPlugin
+        psr4_prefix: Eclyptox\SyliusRedsysPlugin
