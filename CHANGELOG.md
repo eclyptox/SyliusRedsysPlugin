@@ -1,2 +1,2 @@
 #1.0
-Stable version
+Initial stable version
