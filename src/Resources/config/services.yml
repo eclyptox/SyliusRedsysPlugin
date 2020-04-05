@@ -1,0 +1,17 @@
+app.redsys_payment:
+    class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
+    argument:
+        - Eclyptox\SyliusRedsysPlugin\Payum\RedsysGatewayFactory
+    tags:
+        - { name: payum.gateway_factory_builder, factory: "redsys_payment" }
+
+app.redsys_config:
+    class: Eclyptox\SyliusRedsysPlugin\Form\Type\SyliusGatewayConfigurationType
+    tags:
+        - { name: sylius.gateway_configuration_type, type: "redsys_payment", label: "Redsys Payment" }
+        - { name: form.type }
+
+app.redsys_convert:
+    class: Eclyptox\SyliusRedsysPlugin\Payum\Action\ConvertPaymentAction
+    arguments:
+        - '%env(ORDER_SUFFIX)%'
