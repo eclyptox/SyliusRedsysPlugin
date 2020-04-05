@@ -1,3 +1,5 @@
+#1.2.3
+- Get env from getenv
 #1.2.2
 - Fix service config
 #1.2.1

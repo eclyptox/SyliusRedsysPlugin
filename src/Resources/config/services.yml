@@ -11,8 +11,3 @@ services:
         tags:
             - { name: sylius.gateway_configuration_type, type: "redsys_payment", label: "Redsys Payment" }
             - { name: form.type }
-
-    app.redsys_convert:
-        class: Eclyptox\SyliusRedsysPlugin\Payum\Action\ConvertPaymentAction
-        arguments:
-            - '%env(ORDER_SUFFIX)%'

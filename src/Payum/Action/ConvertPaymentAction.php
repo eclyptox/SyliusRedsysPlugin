@@ -18,20 +18,6 @@ class ConvertPaymentAction implements ActionInterface, ApiAwareInterface
     protected $api;
 
     /**
-     * @var string
-     */
-    protected $suffix = '';
-
-    /**
-     * ConvertPaymentAction constructor.
-     * @param $suffix
-     */
-    public function __construct($suffix)
-    {
-        $this->suffix = $suffix ?? '';
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function setApi($api)
@@ -50,6 +36,7 @@ class ConvertPaymentAction implements ActionInterface, ApiAwareInterface
      */
     public function execute($request)
     {
+        $suffix = getenv('ORDER_SUFFIX') ?? '';
         RequestNotSupportedException::assertSupports($this, $request);
 
         /** @var PaymentInterface $payment */
@@ -59,7 +46,7 @@ class ConvertPaymentAction implements ActionInterface, ApiAwareInterface
 
         $details->defaults(array(
             'Ds_Merchant_Amount' => $payment->getTotalAmount(),
-            'Ds_Merchant_Order' => $this->api->ensureCorrectOrderNumber($payment->getNumber().$this->suffix),
+            'Ds_Merchant_Order' => $this->api->ensureCorrectOrderNumber($payment->getNumber().$suffix),
             'Ds_Merchant_MerchantCode' => $this->api->getMerchantCode(),
             'Ds_Merchant_Currency' => $this->api->getISO4127($payment->getCurrencyCode()),
             'Ds_Merchant_TransactionType' => Api::TRANSACTIONTYPE_AUTHORIZATION,
