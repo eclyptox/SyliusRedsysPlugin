@@ -1,3 +1,5 @@
+#1.2.2
+- Fix service config
 #1.2.1
 - Services file fix
 #1.2
