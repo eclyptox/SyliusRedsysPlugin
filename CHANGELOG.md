@@ -1,3 +1,5 @@
+#1.2.1
+- Services file fix
 #1.2
 - Removed useless code
 - Moved suffix to and env param
