@@ -21,7 +21,7 @@ class CaptureAction implements ActionInterface, ApiAwareInterface, GenericTokenF
 
     public function __construct()
     {
-        $this->apiClass = \Crevillo\Payum\Redsys\Api::class;
+        $this->apiClass = Api::class;
     }
 
     /**

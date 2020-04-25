@@ -1,4 +1,5 @@
 <?php
+
 namespace Eclyptox\SyliusRedsysPlugin\Payum\Action;
 
 use Eclyptox\SyliusRedsysPlugin\Payum\Api;
@@ -16,7 +17,7 @@ class ConvertPaymentAction implements ActionInterface, ApiAwareInterface
 
     public function __construct()
     {
-        $this->apiClass = \Crevillo\Payum\Redsys\Api::class;
+        $this->apiClass = Api::class;
     }
 
     /**
@@ -26,6 +27,8 @@ class ConvertPaymentAction implements ActionInterface, ApiAwareInterface
      */
     public function execute($request)
     {
+        $suffix = getenv('ORDER_SUFFIX') ?? '';
+
         RequestNotSupportedException::assertSupports($this, $request);
 
         /** @var PaymentInterface $payment */
@@ -33,14 +36,16 @@ class ConvertPaymentAction implements ActionInterface, ApiAwareInterface
 
         $details = ArrayObject::ensureArrayObject($payment->getDetails());
 
-        $details->defaults(array(
-                               'Ds_Merchant_Amount' => $payment->getTotalAmount(),
-                               'Ds_Merchant_Order' => $this->api->ensureCorrectOrderNumber($payment->getNumber()),
-                               'Ds_Merchant_MerchantCode' => $this->api->getMerchantCode(),
-                               'Ds_Merchant_Currency' => $this->api->getISO4127($payment->getCurrencyCode()),
-                               'Ds_Merchant_TransactionType' => Api::TRANSACTIONTYPE_AUTHORIZATION,
-                               'Ds_Merchant_Terminal' => $this->api->getMerchantTerminalCode(),
-                           ));
+        $details->defaults(
+            array(
+                'Ds_Merchant_Amount' => $payment->getTotalAmount(),
+                'Ds_Merchant_Order' => $this->api->ensureCorrectOrderNumber($payment->getNumber().$suffix),
+                'Ds_Merchant_MerchantCode' => $this->api->getMerchantCode(),
+                'Ds_Merchant_Currency' => $this->api->getISO4127($payment->getCurrencyCode()),
+                'Ds_Merchant_TransactionType' => Api::TRANSACTIONTYPE_AUTHORIZATION,
+                'Ds_Merchant_Terminal' => $this->api->getMerchantTerminalCode(),
+            )
+        );
 
         $request->setResult((array)$details);
     }

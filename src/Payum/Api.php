@@ -84,8 +84,8 @@ class Api
     public function getRedsysUrl()
     {
         return $this->options['sandbox'] ?
-            'https://sis-t.redsys.es:25443/sis/realizarPago/utf-8' :
-            'https://sis.redsys.es/sis/realizarPago/utf-8';
+            'https://sis-t.redsys.es:25443/sis/realizarPago' :
+            'https://sis.redsys.es/sis/realizarPago';
     }
 
     /**
@@ -144,7 +144,7 @@ class Api
 
         // add 0 to the left in case length of the order number is less than 4
         $orderNumber = str_pad($orderNumber, self::ORDER_NUMBER_MINIMUM_LENGTH,
-            '0', STR_PAD_LEFT);
+                               '0', STR_PAD_LEFT);
 
         if (!preg_match('/^[0-9]{4}[a-z0-9]{0,12}$/i', $orderNumber)) {
             throw new LogicException('The payment gateway doesn\'t allow order numbers with this format.');
@@ -304,7 +304,7 @@ class Api
     {
         $base64DecodedKey = base64_decode($this->options['secret_key']);
         $key = $this->encrypt_3DES($params['Ds_Merchant_Order'],
-            $base64DecodedKey);
+                                   $base64DecodedKey);
 
         $res = $this->mac256(
             $this->createMerchantParameters($params),
