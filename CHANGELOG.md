@@ -1,3 +1,5 @@
+#1.2.4
+- Use crevillo library
 #1.2.3
 - Get env from getenv
 #1.2.2
