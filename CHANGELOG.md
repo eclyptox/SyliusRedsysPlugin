@@ -1,3 +1,5 @@
+#1.2.5
+- Remove crevillo library and update own entities
 #1.2.4
 - Use crevillo library
 #1.2.3
