@@ -2,7 +2,7 @@ services:
     app.redsys_payment:
         class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
         arguments:
-            - Eclyptox\SyliusRedsysPlugin\Payum\RedsysGatewayFactory
+            - Crevillo\Payum\Redsys\RedsysGatewayFactory
         tags:
             - { name: payum.gateway_factory_builder, factory: "redsys_payment" }
 
