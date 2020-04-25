@@ -11,8 +11,7 @@
     "php": "^7.2",
     "sylius/sylius": "^1.4",
     "ext-json": "*",
-    "ext-openssl": "*",
-    "crevillo/payum-redsys": "^1.5"
+    "ext-openssl": "*"
   },
   "require-dev": {
     "behat/behat": "^3.4",
