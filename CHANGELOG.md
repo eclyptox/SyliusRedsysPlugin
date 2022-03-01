@@ -1,5 +1,7 @@
+#1.2.7
+- Fixed error sending bizum parameters
 #1.2.6
-- Addes support for bizum
+- Added support for bizum
 - #1.2.5
 - Remove crevillo library and update own entities
 #1.2.4
