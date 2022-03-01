@@ -1,4 +1,6 @@
-#1.2.5
+#1.2.6
+- Addes support for bizum
+- #1.2.5
 - Remove crevillo library and update own entities
 #1.2.4
 - Use crevillo library
