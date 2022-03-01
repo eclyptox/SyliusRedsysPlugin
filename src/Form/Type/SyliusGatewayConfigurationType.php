@@ -18,6 +18,8 @@ final class SyliusGatewayConfigurationType extends AbstractType
             ->add('merchant_code', TextType::class)
             ->add('terminal', NumberType::class)
             ->add('secret_key', TextType::class)
-            ->add('sandbox', CheckboxType::class);
+            ->add('sandbox', CheckboxType::class)
+            ->add('bizum', CheckboxType::class)
+        ;
     }
 }
