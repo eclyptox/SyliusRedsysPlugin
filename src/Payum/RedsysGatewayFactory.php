@@ -78,6 +78,7 @@ class RedsysGatewayFactory implements GatewayFactoryInterface
                     'terminal' => $config['terminal'],
                     'secret_key' => $config['secret_key'],
                     'sandbox' => $config['sandbox'],
+                    'bizum' => $config['bizum'] ?? false,
                 );
 
                 return new Api($redsysConfig);

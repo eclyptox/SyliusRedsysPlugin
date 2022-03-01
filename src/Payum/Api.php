@@ -76,6 +76,9 @@ class Api
         if (false == is_bool($this->options['sandbox'])) {
             throw new InvalidArgumentException('The boolean sandbox option must be set.');
         }
+        if (false == is_bool($this->options['bizum'])) {
+            throw new InvalidArgumentException('The boolean bizum option must be set.');
+        }
     }
 
     /**
@@ -108,6 +111,14 @@ class Api
     public function getMerchantCode()
     {
         return $this->options['merchant_code'];
+    }
+
+    /**
+     * @return bool
+     */
+    public function getBizum()
+    {
+        return $this->options['bizum'];
     }
 
     /**
