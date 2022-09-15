@@ -8,10 +8,10 @@ This plugin integrated [Redsys payments](http://www.redsys.es/) with Sylius base
 ## Installation
 
 ```bash
-$ composer require eclyptox/redsys-plugin
+$ composer require eclyptox/sylius-redsys-plugin
 
 ```
-    
+
 Add plugin dependencies to your config/bundles.php file:
 
 ```php
@@ -21,6 +21,7 @@ return [
 ```
 
 ## Testing
+
 ```bash
 $ wget http://getcomposer.org/composer.phar
 $ php composer.phar install
