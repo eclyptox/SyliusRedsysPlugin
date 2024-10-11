@@ -8,7 +8,7 @@
   "description": "Payment plugin to allow redys payments in redsys.",
   "license": "MIT",
   "require": {
-    "php": ">=7.2",
+    "php": "^8.0",
     "sylius/sylius": "^1.4",
     "ext-json": "*",
     "ext-openssl": "*"
