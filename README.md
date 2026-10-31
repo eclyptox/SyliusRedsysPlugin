@@ -1,3 +1,5 @@
+> ⚠️ **Unmaintained / archived.** This repository is no longer maintained and its dev dependencies have known vulnerabilities (CVE). Do not use it in production as-is.
+
 
 # Redsys Plugin [![Build Status](https://travis-ci.org/eclyptox/SyliusRedsysPlugin.svg?branch=master)](https://travis-ci.org/eclyptox/SyliusRedsysPlugin)
 
